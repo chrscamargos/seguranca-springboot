@@ -1,0 +1,30 @@
+package com.biolab.seguranca.services;
+
+import com.biolab.seguranca.DTOs.ClienteDTO;
+import com.biolab.seguranca.entities.Cliente;
+import com.biolab.seguranca.entities.enums.Role;
+import com.biolab.seguranca.repositories.ClienteRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ClienteService {
+    private final ClienteRepository clienteRepository;
+
+    public ClienteService(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
+
+    public String criarCliente(ClienteDTO dto){
+        Cliente cliente = new Cliente();
+        cliente.setNome(dto.getNome());
+        cliente.setEmail(dto.getEmail());
+        cliente.setSenha(dto.getSenha());
+        if (dto.getRole() == null){
+            cliente.setRole(Role.USER);
+        }else{
+            cliente.setRole(dto.getRole());
+        }
+        clienteRepository.save(cliente);
+        return "Usuário criado";
+    }
+}
