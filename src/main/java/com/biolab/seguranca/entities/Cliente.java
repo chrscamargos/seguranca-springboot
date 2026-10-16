@@ -1,10 +1,7 @@
 package com.biolab.seguranca.entities;
 
 import com.biolab.seguranca.entities.enums.Role;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,5 +21,6 @@ public class Cliente {
     private String nome;
     private String email;
     private String senha;
+    @Enumerated(EnumType.STRING)
     private Role role;
 }
