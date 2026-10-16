@@ -20,7 +20,7 @@ public class ClienteService {
         cliente.setEmail(dto.getEmail());
         cliente.setSenha(dto.getSenha());
         if (dto.getRole() == null){
-            cliente.setRole(Role.USER);
+            cliente.setRole(Role.ROLE_USER);
         }else{
             cliente.setRole(dto.getRole());
         }
